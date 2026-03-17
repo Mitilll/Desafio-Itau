@@ -12,7 +12,7 @@ Repositorio original do ponto de partida e regras do desafio: **https://github.c
 ![Maven](https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white)
 ![Git](https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white)
 
-## 📖 Descrição do Desafio :
+## Descrição do Desafio :
 
 O desafio consiste em criar uma **API REST** que receba transações financeiras e retorne **estatísticas sobre essas transações**.  
 A API deve processar apenas as transações ocorridas nos últimos 60 segundos e fornecer informações agregadas como soma, média, mínimo, máximo e quantidade de transações.
