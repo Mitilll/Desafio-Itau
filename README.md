@@ -1,132 +1,198 @@
-# Itaú Challenge - Resolução :
+Itau Java 
+Um teste técnico pedido em vaga real do Itau.
 
-Repositório com a resolução do desafio proposto pelo Itaú como teste tecnico para vaga junior. O objetivo deste desafio é avaliar habilidades em **desenvolvimento backend**, **Arquetetura de software**(Monolito/MVC) e dominio sobre o funcionamento e controle APIsRest . 
+📋 Descrição
+Aplicação Spring Boot que gerencia transações financeiras e fornece estatísticas sobre elas. A aplicação permite adicionar transações, consultar estatísticas e deletar todas as transações.
 
-##  Link :
-Repositorio original do ponto de partida e regras do desafio: **https://github.com/feltex/desafio-itau-backend?tab=readme-ov-file**
+🔧 Pré-requisitos
+Antes de começar, certifique-se de ter instalado:
 
-##  Tecnologias Utilizadas :
+Java 17 ou superior
+Maven 3.6+ ou use o Maven Wrapper incluído no projeto (mvnw ou mvnw.cmd)
+Git (opcional, para clonar o repositório)
+Verificando as instalações
+java -version
+mvn -version
+🏗️ Como Buildar
+Usando Maven Wrapper (Recomendado)
+O projeto inclui um Maven Wrapper, então você não precisa ter o Maven instalado globalmente.
 
-![Java](https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white)
-![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
-![Maven](https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white)
-![Git](https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white)
+No Linux/macOS:
 
-## Descrição do Desafio :
+./mvnw clean install
+No Windows:
 
-O desafio consiste em criar uma **API REST** que receba transações financeiras e retorne **estatísticas sobre essas transações**.  
-A API deve processar apenas as transações ocorridas nos últimos 60 segundos e fornecer informações agregadas como soma, média, mínimo, máximo e quantidade de transações.
+mvnw.cmd clean install
+Usando Maven instalado
+Se você tem o Maven instalado globalmente:
 
-O objetivo é avaliar:  
-- Qualidade e organização do código  
-- Boas práticas de programação  
-- Estruturação do projeto  
-- Testes e cobertura  
-- Tratamento de erros  
-- Documentação e facilidade de compreensão do código
+mvn clean install
+Este comando irá:
 
-> Observação: Não há uma única forma correta de resolver o desafio, o importante é a clareza, organização e qualidade do código.
+Limpar o diretório target/
+Compilar o código fonte
+Executar os testes
+Gerar o arquivo JAR em target/Desafio-0.0.1-SNAPSHOT.jar
+Build sem executar testes
+Se quiser apenas compilar sem executar os testes:
 
----
+./mvnw clean install -DskipTests
+🚀 Como Rodar
+Opção 1: Usando Maven (Recomendado para desenvolvimento)
+No Linux/macOS:
 
-## Regras e Restrições Técnicas
-1. **Repositório**
-   - Deve estar no **GitHub ou GitLab**  
-   - Não é permitido **fork** de outros projetos  
-   - Deve ter **pelo menos 1 commit por endpoint** (mínimo de 3 commits)  
-   - Todos os commits devem ser feitos pelo **mesmo usuário**  
-
-2. **API**
-   - Endpoints devem seguir **exatamente** os nomes fornecidos (`/transacao`, `/estatistica`)  
-   - Aceitar e retornar apenas **JSON**  
-   - Todos os dados devem ser **armazenados em memória**, sem bancos de dados (H2, MySQL, PostgreSQL, etc.) ou caches externos (Redis, Memcached, Infinispan, etc.)  
-   - Não enviar o projeto em arquivos; deve ser acessível publicamente para avaliação  
-
-3. **Validação das Transações**
-   - `valor` deve ser maior ou igual a 0  
-   - `dataHora` não pode estar no futuro  
-   - Campos obrigatórios: `valor` e `dataHora`  
-   - Apenas transações válidas são aceitas  
-
----
-
-## Endpoints da API
-
-### 1. POST /transacao
-Recebe uma transação com os campos:
-
-```json
-{
-  "valor": 123.45,
-  "dataHora": "2020-08-07T12:34:56.789-03:00"
-}
-```
-
-## ▶️ Como executar o projeto
-
-Siga os passos abaixo para rodar a aplicação localmente:
-
-### Pré-requisitos
-
-Antes de começar, você precisa ter instalado em sua máquina:
-
-* **Java 22**
-* **Git**
-
----
-
-### Clonando o repositório
-
-Abra o terminal e execute:
-
-```bash
-git clone <URL_DO_SEU_REPOSITORIO>
-```
-
-Depois, entre na pasta do projeto:
-
-```bash
-cd <NOME_DO_PROJETO>
-```
-
----
-
-### Executando o projeto
-
-#### Usando o terminal (Java puro ou Spring Boot)
-
-Se o projeto usa **Spring Boot**, execute:
-
-```bash
 ./mvnw spring-boot:run
-```
+No Windows:
 
-ou, se estiver usando Maven instalado:
+mvnw.cmd spring-boot:run
+Opção 2: Usando o JAR gerado
+Após fazer o build, você pode executar o JAR diretamente:
 
-```bash
-mvn spring-boot:run
-```
+java -jar target/Desafio-0.0.1-SNAPSHOT.jar
+Opção 3: Executando a classe principal
+./mvnw exec:java -Dexec.mainClass="dev.Desafio.Desafio.DesafioApplication"
+Verificando se a aplicação está rodando
+A aplicação estará disponível em:
 
-Se for um projeto Java simples:
+URL Base: http://localhost:8080
+Você pode verificar se está funcionando acessando:
 
-```bash
-javac -d bin src/**/*.java
-java -cp bin Main
-```
+http://localhost:8080/estatistica (deve retornar estatísticas vazias inicialmente)
+🧪 Como Testar
+Executando todos os testes
+No Linux/macOS:
 
----
+./mvnw test
+No Windows:
 
-#### Usando uma IDE
+mvnw.cmd test
+Executando testes com Maven instalado
+mvn test
+Executando um teste específico
+./mvnw test -Dtest=DesafioApplicationTests
+Visualizando relatórios de teste
+Após executar os testes, os relatórios estarão disponíveis em:
 
-Você também pode rodar pela sua IDE (IntelliJ, Eclipse, etc):
+target/surefire-reports/ - Relatórios em formato XML e TXT
+📡 Endpoints da API
+Transações
+POST /transacao
+Adiciona uma nova transação.
 
-1. Abra o projeto
-2. Aguarde o carregamento das dependências
-3. Execute a classe principal (geralmente `Main` ou a classe com `@SpringBootApplication`)
+Exemplo de requisição:
 
----
+curl -X POST http://localhost:8080/transacao \
+  -H "Content-Type: application/json" \
+  -d '{
+    "valor": 100.50,
+    "dataHora": "2024-01-15T10:30:00Z"
+  }'
+Respostas:
 
-### Pronto!
+201 Created - Transação criada com sucesso
+422 Unprocessable Entity - Erro de validação
+400 Bad Request - Erro na requisição
+DELETE /transacao
+Deleta todas as transações armazenadas.
 
-A aplicação estará rodando localmente.
-Agora é só testar a solução do desafio 
+Exemplo de requisição:
+
+curl -X DELETE http://localhost:8080/transacao
+Resposta:
+
+200 OK - Transações deletadas com sucesso
+Estatísticas
+GET /estatistica
+Retorna estatísticas das transações dos últimos 60 segundos (configurável em application.yml).
+
+Exemplo de requisição:
+
+curl http://localhost:8080/estatistica
+Resposta:
+
+{
+  "soma": 100.50,
+  "min": 100.50,
+  "max": 100.50,
+  "media": 100.50,
+  "quantidade": 1
+}
+⚙️ Configuração
+As configurações da aplicação estão em src/main/resources/application.yml:
+
+estatistica:
+  segundos: 60
+Este valor define quantos segundos no passado serão considerados para o cálculo das estatísticas.
+
+🛠️ Tecnologias Utilizadas
+Spring Boot 4.0.1 - Framework principal
+Java 17 - Linguagem de programação
+Maven - Gerenciador de dependências
+Lombok - Redução de boilerplate
+JUnit 5 - Framework de testes
+📁 Estrutura do Projeto
+Desafio-Itau/
+├── .idea/
+├── .mvn/
+├── desafio/
+│   ├── .idea/
+│   ├── .mvn/
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/
+│   │   │   │   └── com/itau/desafio/
+│   │   │   │       ├── controller/          # Controllers da aplicação
+│   │   │   │       │   ├── EstatisticaController.java
+│   │   │   │       │   └── TransacaoController.java
+│   │   │   │       │
+│   │   │   │       ├── Dtos/                # DTOs de requisição
+│   │   │   │       │   ├── EstatisticaResquest.java
+│   │   │   │       │   └── TransacaoRequest.java
+│   │   │   │       │
+│   │   │   │       ├── model/               # Modelos/entidades da aplicação
+│   │   │   │       │   ├── Estatistica.java
+│   │   │   │       │   └── Transacao.java
+│   │   │   │       │
+│   │   │   │       ├── repository/          # Repositórios e armazenamento de dados
+│   │   │   │       │   ├── EstatisticaRepository.java
+│   │   │   │       │   └── TransacaoRepository.java
+│   │   │   │       │
+│   │   │   │       ├── service/             # Regras de negócio
+│   │   │   │       │   └── TransacaoService.java
+│   │   │   │       │
+│   │   │   │       └── DesafioApplication.java
+│   │   │   │
+│   │   │   └── resources/
+│   │   │
+│   │   └── test/                            # Testes unitários
+│   │
+│   ├── target/
+│   ├── pom.xml                              # Configuração Maven
+│   ├── mvnw
+│   ├── mvnw.cmd
+│   ├── HELP.md
+│   ├── .gitignore
+│   └── .gitattributes
+│
+└── README.md
+🐛 Solução de Problemas
+Erro: "Java version not found"
+Certifique-se de ter o Java 17 instalado e configurado no PATH.
+
+Erro: "Port 8080 already in use"
+A porta 8080 já está em uso. Você pode:
+
+Parar a aplicação que está usando a porta
+Ou alterar a porta em application.yml adicionando:
+server:
+  port: 8081
+Erro ao executar ./mvnw
+Certifique-se de que o arquivo mvnw tem permissão de execução:
+
+chmod +x mvnw
+📝 Notas
+A aplicação armazena transações em memória (não persiste em banco de dados)
+As estatísticas são calculadas considerando apenas transações dos últimos N segundos (configurável)
+Ao reiniciar a aplicação, todas as transações são perdidas
+📄 Licença
+Este projeto é um teste técnico.
